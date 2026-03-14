@@ -1,0 +1,16 @@
+function doPost(e) {
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+
+  var data = JSON.parse(e.postData.contents);
+
+  var time = new Date();
+  var room = data.room;
+  var motion = data.motion;
+  var distance = data.distance;
+  var waste = data.waste_seconds;
+
+  sheet.appendRow([time, room, motion, distance, waste]);
+
+  return ContentService.createTextOutput("Success");
+}
